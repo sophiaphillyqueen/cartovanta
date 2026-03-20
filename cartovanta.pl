@@ -18,6 +18,7 @@ use strict;
 
 my @arguma; # Environments to pass to the subcommand
 my $subcm; # Subcommand to search for
+my $subcn; # Name of subcommand
 my $counto; # Used for argument counting:
 
 my $pathvar; # The path along wich to search for subcommands:
@@ -32,7 +33,8 @@ if ( $counto < 0.5 )
 {
   die("\nFATAL ERROR:\n  Usage: cartovanta [subcommand] ([arguments])\n\n");
 }
-$subcm = shift(@arguma);
+$subcn = shift(@arguma);
+$subcm = $subcn . '-exe';
 
 # Put together the value for $pathvar
 $pathvar = $ENV{'CARTOVANTA_PATH'};
@@ -53,6 +55,6 @@ foreach $patheach (@pathpart)
   }
 }
 
-die("\nFATAL ERROR:\n No such -cartovanta- subcommand: " . $subcm . " :\n\n");
+die("\nFATAL ERROR:\n No such -cartovanta- subcommand: " . $subcn . " :\n\n");
 
 
